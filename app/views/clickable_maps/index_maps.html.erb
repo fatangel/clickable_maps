@@ -1,0 +1,53 @@
+<script type="text/javascript">
+$(document).ready(function(){
+/* Show jQuery is running */
+$('h3').css({textDecoration: 'underline'});
+
+$('#map').zoommap({
+		// Width and Height of the Map
+		width: '642px',
+		height: '600px',
+
+		//Misc Settings
+		blankImage: '/images/maps/blank.gif',
+		zoomDuration: 1000,
+		bulletWidthOffset: '10px',
+		bulletHeightOffset: '10px',
+
+		//ids and classes
+		zoomClass: 'zoomable',
+		popupSelector: 'div.popup',
+		popupCloseSelector: 'a.close',
+
+		//Return to Parent Map Link
+		showReturnLink: true,
+		returnId: 'returnlink',
+		returnText: 'Zur&uuml;ck zur &Uuml;bersichtskarte',
+
+		//Initial Region to be shown
+		map: {
+			id: 'oesterreich',
+			image: '/images/maps/oe.png',
+			data: '/oe.html',
+            maps: [
+<% for state in @states %>
+			{
+				id: '<%= state.short_name %>',
+				parent: 'oesterreich',
+				image: '/images/maps/<%= state.short_name %>.png',
+				data: '/districts/<%= state.short_name %>',
+				width: '<%= state.imagesize_x %>px',
+				height: '<%= state.imagesize_y %>px',
+				top: '<%= state.position_y %>px',
+				left: '<%= state.position_x %>px'
+			},
+<% end %>
+			]
+		}
+	});
+});
+</script>
+
+<h3>Österreich</h3>
+
+<div id="map"></div>
