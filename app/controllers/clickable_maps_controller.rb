@@ -1,9 +1,19 @@
 class ClickableMapsController < ApplicationController
 
-  radiant_layout 'Maps', :only => [ :show_maps ]
+  radiant_layout 'Maps', :only => [ :index_maps, :show_map ]
   no_login_required
 
-  def show_maps
+  def index_maps
+    @states=State.find(:all)
+    if @states
+      respond_to do |format|
+        format.html
+        format.xml { render :xml => @states }
+      end
+    end
+  end
+
+  def show_map
     if params[:id]
       @state=State.find_by_short_name(params[:id])
       if @state
