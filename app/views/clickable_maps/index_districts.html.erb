@@ -1,0 +1,13 @@
+<% for district in @districts %>
+
+<a href="javascript:void(0)" id="<%= district.short_name %>" class="bullet" rel="<%= district.position_x %>-<%= district.position_y %>">&nbsp;</a>
+	<div class="popup" id="<%= district.short_name %>-box">
+		<h3><%= district.name %></h3>
+		<div class="popupcontent">
+			<p><%=h district.description %></p>
+		</div>
+		<a class="detail" href="/bezirke/<%= district.short_name %>">Details</a>
+		<a class="close" href="javascript:void(0)">Schliessen</a>
+	</div>
+
+<% end %>
