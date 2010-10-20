@@ -5,9 +5,9 @@ class ClickableMapsExtension < Radiant::Extension
   url "http://www.eyecatch.at"
 
   define_routes do |map|
-    map.all_maps 'all_maps', :controller => 'clickable_maps', :action => 'index_maps', :layout => 'Normal'
-    map.maps 'show_map/:id', :controller => 'clickable_maps', :action => 'show_map', :layout => 'Normal'
-    map.districts 'districts/:id', :controller => 'clickable_maps', :action => 'index_districts', :layout => false
+    map.all_maps 'all_maps', :controller => 'clickable_maps', :action => 'index_maps'
+    map.maps 'show_map/:id', :controller => 'clickable_maps', :action => 'show_map'
+    map.districts 'districts/:id', :controller => 'clickable_maps', :action => 'index_districts'
     map.namespace :admin do |admin|
        admin.resources :clickable_maps
        admin.district_grid '/district_grid', :controller => 'clickable_maps', :action => 'grid'
