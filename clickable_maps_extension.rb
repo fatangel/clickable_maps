@@ -1,5 +1,5 @@
 class ClickableMapsExtension < Radiant::Extension
-  version "1.0"
+  version "1.01"
   description "Adds clickable maps and district asset management as an radiant-extension"
   url "http://www.eyecatch.at"
 
