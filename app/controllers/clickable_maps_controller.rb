@@ -1,5 +1,5 @@
 class ClickableMapsController < ApplicationController
-
+ 
   radiant_layout 'homo-maps', :only => [ :index_maps, :show_map ]
   no_login_required
 

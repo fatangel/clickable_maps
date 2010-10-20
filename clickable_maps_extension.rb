@@ -1,4 +1,3 @@
-
 class ClickableMapsExtension < Radiant::Extension
   version "1.0"
   description "Adds clickable maps and district asset management as an radiant-extension"
