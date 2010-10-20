@@ -15,4 +15,4 @@ public/assets/
 nbproject/*
 config/database.yml
 lib/skins/**/*
-
+public/
