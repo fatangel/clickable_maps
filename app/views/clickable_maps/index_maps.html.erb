@@ -3,8 +3,8 @@ $(document).ready(function(){
 
 $('#map').zoommap({
 		// Width and Height of the Map
-		width: '642px',
-		height: '600px',
+		width: '642',
+		height: '600',
 
 		//Misc Settings
 		blankImage: '/images/maps/blank.gif',
@@ -34,12 +34,12 @@ $('#map').zoommap({
 				parent: 'oesterreich',
 				image: '/images/maps/<%= state.short_name %>.png',
 				data: '/districts/<%= state.short_name %>',
-				width: '<%= state.fullsize_x %>px',
-				height: '<%= state.fullsize_y %>px',
-                area_width: '<%= state.imagesize_x %>px',
-				area_height: '<%= state.imagesize_y %>px',
-				top: '<%= state.position_y %>px',
-				left: '<%= state.position_x %>px'
+				width: '<%= state.fullsize_x %>',
+				height: '<%= state.fullsize_y %>',
+                area_width: '<%= state.imagesize_x %>',
+				area_height: '<%= state.imagesize_y %>',
+				top: '<%= state.position_y %>',
+				left: '<%= state.position_x %>'
 			},
 <% end %>
 			]
