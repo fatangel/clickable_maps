@@ -1,7 +1,5 @@
 <script type="text/javascript">
 $(document).ready(function(){
-/* Show jQuery is running */
-$('h3').css({textDecoration: 'underline'});
 
 $('#map').zoommap({
 		// Width and Height of the Map
@@ -36,8 +34,10 @@ $('#map').zoommap({
 				parent: 'oesterreich',
 				image: '/images/maps/<%= state.short_name %>.png',
 				data: '/districts/<%= state.short_name %>',
-				width: '<%= state.imagesize_x %>px',
-				height: '<%= state.imagesize_y %>px',
+				width: '<%= state.imagesize_x*3 %>px',
+				height: '<%= state.imagesize_y*3 %>px',
+                area_width: '<%= state.imagesize_x %>px',
+				area_height: '<%= state.imagesize_y %>px',
 				top: '<%= state.position_y %>px',
 				left: '<%= state.position_x %>px'
 			},
@@ -48,6 +48,7 @@ $('#map').zoommap({
 });
 </script>
 
-<h3>Österreich</h3>
-
+<% content_for :breadcrumbs do %>
+  <%= link_to "Start", '/' %><li>Österreich</li>
+<% end %>
 <div id="map"></div>

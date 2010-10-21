@@ -4,6 +4,7 @@ class ClickableMapsController < ApplicationController
   no_login_required
 
   def index_maps
+    @title="Österreich"
     @states=State.find(:all)
     if @states
       respond_to do |format|
