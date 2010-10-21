@@ -5,7 +5,7 @@ class AddPosition < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column :states, :position_y
+    remove_column :states, :position_x
     remove_column :states, :position_y
   end
 end
