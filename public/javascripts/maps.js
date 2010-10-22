@@ -44,21 +44,32 @@
 			function displayMap(region){
 				//Set Current Region Id
 				$(this).data('currentId', region.id);
+                                if (region.parent == undefined) {
+					width=addpx(settings.width);
+					height=addpx(settings.height);
+                                        left=addpx("0");
+                                        top=addpx("0");
+                                }
+                                else {
+					width=addpx(region.width);
+					height=addpx(region.height);
+                                        left=addpx((settings.width-region.width)/2);
+                                        top=addpx((settings.height-region.height)/2);
+                                }
 
 				//Clear the Map and Set the Background Image
 				map.empty().css({
 					backgroundImage: 'url(' + region.image + ')',
-					width: addpx(region.width),
-					height: addpx(region.height),
-                    top: addpx((settings.width-region.width)/2),
-                    left: addpx((settings.left-region.left)/2)
+					width: width,
+					height: height,
+                                        left: left,
+                                        top: top
 				});
 				var check = map.css('background-image');
 
 				//Load RegionData
 				loadRegionData(region);
 			}
-			/************************************************************************************/
 
 
 			//Show Return Link
