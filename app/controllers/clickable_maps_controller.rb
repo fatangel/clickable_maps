@@ -30,7 +30,7 @@ class ClickableMapsController < ApplicationController
     if params[:id]
       state=State.find_by_short_name(params[:id])
       if state
-        @districts=District.find_all_by_state_id(state.id)
+        @districts=District.find_all_by_state_id(state.id, :conditions => "position_x IS NOT NULL")
         if @districts
           respond_to do |format|
             format.html
