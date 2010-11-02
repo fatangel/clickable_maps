@@ -1,10 +1,10 @@
 %h1 Übersicht der Bezirke
-%p Unterhalb finden Sie eine Liste aller Bezirke Österreichs. Klicken Sie auf den Bezirksnamen, um die Detailseite zu bearbeiten. Klicken Sie auf die Abkürzung um die Kartenposition und die Kurzbeschreibung zu editieren.
+%p Unterhalb finden Sie eine Liste aller Bezirke Österreichs. Klicken Sie auf den Bezirksnamen, um die Detailseite zu bearbeiten. Klicken Sie auf den Code um die Kartenposition und die Kurzbeschreibung zu editieren.
 
 %table.index
   %tr
     %th Name
-    %th Abkürzung
+    %th Code
     %th Bundesland
   - unless @districts.blank?
     - @districts.each do |district|
@@ -19,5 +19,5 @@
           = link_to(district.short_name, edit_admin_clickable_map_path(district))
         %td #{district.state.name}
 = will_paginate @districts
-
+%p
 = link_to("Neuen Bezirk anlegen", new_admin_clickable_map_path)
