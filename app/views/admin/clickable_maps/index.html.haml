@@ -18,6 +18,6 @@
         %td
           = link_to(district.short_name, edit_admin_clickable_map_path(district))
         %td #{district.state.name}
-= will_paginate @districts
+= will_paginate @districts, :param_name => :page
 %p
 = link_to("Neuen Bezirk anlegen", new_admin_clickable_map_path)
