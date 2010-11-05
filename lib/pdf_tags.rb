@@ -11,7 +11,7 @@ module PdfTags
     %{
       <form action="/pages/#{tag.locals.page.id}/pdf" method="post">
         <div id="pdf_form">
-          <input class="submit" id="pdf_submit" type="submit" value="PDF erzeugen" />
+          <input src="/system/themes/1/homo/images/pdf.png" class="pdf_image" id="pdf_submit" type="image" alt="PDF erzeugen" />
         </div>
       </form>
     }
