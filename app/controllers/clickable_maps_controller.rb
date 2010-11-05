@@ -2,7 +2,13 @@ class ClickableMapsController < ApplicationController
  
   radiant_layout 'homo-maps', :only => [ :index_maps, :show_map ]
   no_login_required
-
+  skip_before_filter :verify_authenticity_token
+  
+  def create
+    @page = Page.find(params[:page_id])
+    make_and_send_pdf(CGI::escape(@page.title), :html_string => @page.render, :stylesheets => "prince.css")
+  end
+               
   def index_maps
     @title="Österreich"
     @states=State.find(:all)

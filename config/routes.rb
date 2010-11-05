@@ -1,5 +1,3 @@
 ActionController::Routing::Routes.draw do |map|
-  # map.namespace :admin, :member => { :remove => :get } do |admin|
-  #   admin.resources :clickable_maps
-  # end
+  map.resources :pdf, :only => [ :index, :create ], :path_prefix => '/pages/:page_id', :controller => 'clickable_maps'
 end

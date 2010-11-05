@@ -16,5 +16,6 @@ class ClickableMapsExtension < Radiant::Extension
     tab 'Content' do
        add_item "Bezirke", "/admin/clickable_maps", :after => "Pages", :visibility => [:admin]
     end
+    Page.send :include, PdfTags
   end
 end
