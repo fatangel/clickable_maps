@@ -1,5 +1,36 @@
 <script type="text/javascript">
+
+function GoTo (select) {
+  var link = select.options[select.options.selectedIndex].value;
+  if (link != "") window.location.href = link;
+}
+
+//$.ajaxSetup({
+//  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+//})
+
+$.fn.submitWithAjax = function() {
+  this.submit(function() {
+    if (document.state_selector.state_id.selectedIndex>0) {
+      $.post(this.action, $(this).serialize(), null, "script");
+      return false;
+    }
+    else return false;
+  })
+  return this;
+};
+
 $(document).ready(function(){
+
+$('#state_selector').submitWithAjax();
+
+$('#state_id').change(function() {
+  if (document.state_selector.state_id.selectedIndex>0) {
+    $.post(document.state_selector.action, $(document.state_selector).serialize(), null, "script");
+    return false;
+  }
+  else return false;
+});
 
 $('#map').zoommap({
 		// Width and Height of the Map
@@ -52,4 +83,18 @@ $('#map').zoommap({
 <% content_for :breadcrumbs do %>
   <%= link_to "Start", '/' %><li>Österreich</li>
 <% end %>
+
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida erat vitae odio tempus egestas. Nullam massa justo, cursus eu commodo vitae, pellentesque sit amet nisl. Phasellus diam magna, pharetra ut aliquam quis, vehicula laoreet lectus. In mattis justo ac dui semper rhoncus. Suspendisse porta quam vitae diam varius tincidunt. Integer aliquet dui in urna ornare consectetur eget nec elit. Vestibulum tempor tristique congue. 
+</p>
+
+<div>
+<% form_for @states, {:url => {:action => "districts_list"}, :html => {:id => "state_selector", :name => "state_selector"}} do %>
+<%= collection_select(:state, :id, @states, :id, :name, { :include_blank => "Bundesland auswählen", :selected => nil }) %>
+  <!-- input type="submit" value="Bezirke anzeigen"/ -->
+<%  end %>
+</div>
+
+<div id="district_selector"></div>
+
 <div id="map"></div>

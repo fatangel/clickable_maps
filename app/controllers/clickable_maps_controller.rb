@@ -11,7 +11,7 @@ class ClickableMapsController < ApplicationController
                
   def index_maps
     @title="Österreich"
-    @states=State.find(:all)
+    @states=State.find(:all, :order => "name DESC")
     if @states
       respond_to do |format|
         format.html
@@ -29,6 +29,14 @@ class ClickableMapsController < ApplicationController
           format.xml { render :xml => @state }
         end
       end
+    end
+  end
+
+  def districts_list
+    @districts=District.find_all_by_state_id(params[:state][:id], :conditions => "position_x IS NOT NULL") if params[:state][:id]
+    respond_to do |format|
+      format.html { redirect_to all_maps_path }
+      format.js
     end
   end
 

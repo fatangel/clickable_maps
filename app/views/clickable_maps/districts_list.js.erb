@@ -1,0 +1,1 @@
+$("#district_selector").html("<select id='district_link' onchange='GoTo(this)'><option value=''>Bezirk auswählen</option><% for district in  @districts do %><option value='/bezirke/<%= district.short_name%>'><%= district.name%></option><%end%></select>");

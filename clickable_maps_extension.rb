@@ -7,6 +7,7 @@ class ClickableMapsExtension < Radiant::Extension
     map.all_maps 'all_maps', :controller => 'clickable_maps', :action => 'index_maps'
     map.maps 'show_map/:id', :controller => 'clickable_maps', :action => 'show_map'
     map.districts 'districts/:id', :controller => 'clickable_maps', :action => 'index_districts'
+    map.districts_list 'districts_list', :controller => 'clickable_maps', :action => 'districts_list'
     map.namespace :admin do |admin|
        admin.resources :clickable_maps
      end
