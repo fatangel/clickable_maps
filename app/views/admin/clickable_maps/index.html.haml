@@ -3,9 +3,12 @@
 
 %table.index
   %tr
-    %th Name
-    %th Code
-    %th Bundesland
+    %th 
+      = link_to('Name', '?order=name')
+    %th
+      = link_to('Code', '?order=short_name')
+    %th 
+      = link_to('Bundesland', '?order=state_id')
   - unless @districts.blank?
     - @districts.each do |district|
       %tr

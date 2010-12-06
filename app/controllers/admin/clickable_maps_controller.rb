@@ -1,7 +1,8 @@
 class Admin::ClickableMapsController < ApplicationController
   
   def index
-    @districts = District.paginate :per_page => 25, :page => params[:page], :order => 'name'
+    @districts = District.paginate :per_page => 25, :page => params[:page], :order => 'name' unless params[:order]
+    @districts = District.paginate :per_page => 25, :page => params[:page], :order => params[:order] if params[:order]
   end
 
   def new
