@@ -2,15 +2,18 @@
 module PdfTags
   include Radiant::Taggable
   
-  desc "
+  desc %{
     Renders a form for printing pages to PDF.
-  
+    
     *Usage:*
-    <pre><code><r:pdf /></code></pre>"
+    <pre><code><r:pdf cssfile="filename"/></code></pre>
+  }
   tag 'pdf' do |tag|
+    option = tag.locals.option
     %{
       <form action="/pages/#{tag.locals.page.id}/pdf" method="post">
         <div id="pdf_form">
+          <input type="hidden" id="cssfile" value="#{option.cssfile}"/>
           <input src="/system/themes/1/homo/images/pdf.png" class="pdf_image" id="pdf_submit" type="image" alt="PDF erzeugen" />
         </div>
       </form>

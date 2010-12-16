@@ -6,7 +6,7 @@ class ClickableMapsController < ApplicationController
   
   def create
     @page = Page.find(params[:page_id])
-    make_and_send_pdf(CGI::escape(@page.title), :html_string => @page.render, :stylesheets => "prince.css")
+    make_and_send_pdf(CGI::escape(@page.title), :html_string => @page.render, :stylesheets => params[:page_id])
   end
                
   def index_maps
