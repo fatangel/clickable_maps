@@ -13,7 +13,7 @@ module PdfTags
       <form action="/pages/#{tag.locals.page.id}/pdf" method="post">
         <div id="pdf_form">
           <input type="hidden" id="cssfile" name="cssfile" value="#{tag.attr['cssfile']}"/>
-          <input src="/system/themes/1/homo/images/pdf.png" class="pdf_image" id="pdf_submit" type="image" rel="tipsy" title="PDF erzeugen" />
+          <input src="/system/themes/1/homo/images/pdf.png" class="pdf_image" id="pdf_submit" type="image" rel="tipsy" title="Seite als PDF anzeigen" />
         </div>
       </form>
     }
