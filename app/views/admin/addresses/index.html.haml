@@ -1,26 +1,25 @@
-%h1 Übersicht der Bezirke
-%p Unterhalb finden Sie eine Liste aller Bezirke Österreichs. Klicken Sie auf den Bezirksnamen, um die Detailseite zu bearbeiten. Klicken Sie auf den Code um die Kartenposition und die Kurzbeschreibung zu editieren.
+%h1 Übersicht der Adressen
+%p Unterhalb finden Sie eine Liste aller Adressen. Klicken Sie auf den Namen, um die Details zu bearbeiten. 
 
 %table.index
   %tr
     %th 
+      = link_to('Bezirk', '?order=district_id')
+    %th 
       = link_to('Name', '?order=name')
     %th
-      = link_to('Code', '?order=short_name')
-    %th 
-      = link_to('Bundesland', '?order=state_id')
-  - unless @districts.blank?
-    - @districts.each do |district|
+      = link_to('Behörde', '?order=behoerde')
+    %th
+      = link_to('Adresse', '?order=adresse')
+ 
+  - unless @addresses.blank?
+    - @addresses.each do |address|
       %tr
-        %td
-          - data=::Page.find_by_slug(district.short_name)
-          - unless data.nil?
-            = link_to(district.name, edit_admin_page_path(data.id))
-          - else
-            #{district.name}
-        %td
-          = link_to(district.short_name, edit_admin_clickable_map_path(district))
-        %td #{district.state.name}
-= will_paginate @districts, :param_name => :page
+        %td 
+          = link_to("(#{address.district.short_name}) #{address.district.name}", edit_admin_address_path(address))         
+        %td #{address.name}
+        %td #{address.behoerde}
+        %td #{address.adresse}
+= will_paginate @addresses, :param_name => :page
 %p
-= link_to("Neuen Bezirk anlegen", new_admin_clickable_map_path)
+= link_to("Neue Adresse anlegen", new_admin_address_path)

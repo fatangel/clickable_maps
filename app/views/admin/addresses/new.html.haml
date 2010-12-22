@@ -1,26 +1,35 @@
-%h1 Neuen Bezirk anlegen
-- form_for :district, @district, :url => admin_clickable_maps_path, :html => {:method => :post} do |form|
+%h1 Neue Adresse anlegen
+- form_for :address, @address, :url => admin_addresses_path, :html => {:method => :post} do |form|
   .form-area
     %p.title
-      = form.label :Abkürzung
-      = form.text_field :short_name, :class => 'textbox', :maxlength => 5
+      = form.label :Behörde
+      = form.text_field :behoerde, :class => 'textbox', :maxlength => 100
     %p.title
-      = form.label :name
+      = form.label :Abteilung
+      = form.text_field :abteilung, :class => 'textbox', :maxlength => 100
+    %p.title
+      = form.label :Name
       = form.text_field :name, :class => 'textbox', :maxlength => 100
     %p.title
-      = form.label :Beschreibung
-      = form.text_field :description, :class => 'textbox', :maxlength => 255
+      = form.label :Telefon
+      = form.text_field :telefon, :class => 'textbox', :maxlength => 25
     %p.title
-      = form.label :Position_X
-      = form.text_field :position_x, :class => 'textbox', :maxlength => 4
+      = form.label :Email
+      = form.text_field :email, :class => 'textbox', :maxlength => 100
     %p.title
-      = form.label :Position_Y
-      = form.text_field :position_y, :class => 'textbox', :maxlength => 4
+      = form.label :Adresse
+      = form.text_field :adresse, :class => 'textbox', :maxlength => 100
     %p.title
-      = form.label :Bundesland
-      = form.collection_select :state_id, ::State.find(:all, :order => :name), :id, :name, {}
+      = form.label :URL
+      = form.text_field :url, :class => 'textbox', :maxlength => 25
+    %p.title
+      = form.label :Sonstiges
+      = form.text_field :sonstiges, :class => 'textbox', :maxlength => 100
+    %p.title
+      = form.label :Bezirk
+      = form.collection_select :district_id, ::District.find(:all, :order => :name), :id, :name_with_short_name, {}
   %p.buttons
     = form.submit "Speichern"
     or
-    = link_to 'Abbruch', admin_clickable_maps_url
+    = link_to 'Abbruch', admin_addresses_url
 

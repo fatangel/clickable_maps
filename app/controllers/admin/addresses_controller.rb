@@ -1,8 +1,8 @@
 class Admin::AddressesController < ApplicationController
   
   def index
-    @addresses = Address.paginate :per_page => 25, :page => params[:page], :order => 'name' unless params[:order]
-    @addresses = Address.paginate :per_page => 25, :page => params[:page], :order => params[:order] if params[:order]
+    order=params[:order] || "district_id"
+    @addresses = Address.paginate :per_page => 25, :page => params[:page], :order => order
   end
 
   def new
@@ -13,7 +13,7 @@ class Admin::AddressesController < ApplicationController
     @address = Address.new(params[:address])
     if @address.save
       flash[:notice] = 'Die Adresse wurde erfolgreich angelegt.'
-      redirect_to admin_address_url
+      redirect_to admin_addresses_url
     else
       render :new
     end
@@ -26,7 +26,7 @@ class Admin::AddressesController < ApplicationController
   def update
     @address = Address.find(params[:id])
     if @address.update_attributes(params[:address])
-      redirect_to admin_address_url
+      redirect_to admin_addresses_url
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class Admin::AddressesController < ApplicationController
   def destroy
     @address = Address.find(params[:id])
     @address.destroy
-    redirect_to admin_address_url
+    redirect_to admin_addresses_url
   end
   
 end
