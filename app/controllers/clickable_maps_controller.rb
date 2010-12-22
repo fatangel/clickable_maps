@@ -1,6 +1,6 @@
 class ClickableMapsController < ApplicationController
  
-  radiant_layout 'homo-maps', :only => [ :index_maps, :show_map ]
+  radiant_layout 'maps', :only => [ :index_maps, :show_map ]
   no_login_required
   skip_before_filter :verify_authenticity_token
   
