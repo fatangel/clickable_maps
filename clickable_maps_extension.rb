@@ -11,13 +11,14 @@ class ClickableMapsExtension < Radiant::Extension
     map.namespace :admin do |admin|
        admin.resources :districts
        admin.resources :addresses
-     end
+       admin.generate_page_address 'districts/:id/generate_page', :controller => 'districts', :action => 'generate_page'
+    end
   end
 
   def activate
     tab 'Content' do
        add_item "Bezirke", "/admin/districts", :after => "Pages", :visibility => [:admin]
-       add_item "Adressen", "/admin/addresses", :after => "Bezirke", :visibility => [:admin]       
+       add_item "Adressen", "/admin/addresses", :after => "Bezirke", :visibility => [:admin]    
     end
     Page.send :include, PdfTags
   end

@@ -1,5 +1,5 @@
 %h1 Neuen Bezirk anlegen
-- form_for :district, @district, :url => admin_clickable_maps_path, :html => {:method => :post} do |form|
+- form_for :district, @district, :url => admin_districts_path, :html => {:method => :post} do |form|
   .form-area
     %p.title
       = form.label :Abkürzung
@@ -22,5 +22,5 @@
   %p.buttons
     = form.submit "Speichern"
     or
-    = link_to 'Abbruch', admin_clickable_maps_url
+    = link_to 'Abbruch', admin_districts_url
 

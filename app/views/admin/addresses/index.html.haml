@@ -11,15 +11,19 @@
       = link_to('Behörde', '?order=behoerde')
     %th
       = link_to('Adresse', '?order=adresse')
- 
+
   - unless @addresses.blank?
     - @addresses.each do |address|
       %tr
         %td 
-          = link_to("(#{address.district.short_name}) #{address.district.name}", edit_admin_address_path(address))         
+          - unless address.district.nil?
+            = link_to("(#{address.district.short_name}) #{address.district.name}", edit_admin_address_path(address))         
+          - else
+            = link_to("Kein Bezirk zugewiesen", edit_admin_address_path(address))         
         %td #{address.name}
         %td #{address.behoerde}
         %td #{address.adresse}
+  
 = will_paginate @addresses, :param_name => :page
 %p
 = link_to("Neue Adresse anlegen", new_admin_address_path)

@@ -1,5 +1,5 @@
 %h1 Bezirk bearbeiten
-- form_for :district, @district, :url => admin_clickable_map_path(@district), :html => {:method => :put, :multipart => true} do |form|
+- form_for :district, @district, :url => admin_district_path(@district), :html => {:method => :put, :multipart => true} do |form|
   .form-area
     %p.title
       = form.label :Abkürzung
@@ -22,7 +22,7 @@
   %p.buttons
     = form.submit "Speichern"
     or
-    = link_to 'Abbruch', admin_clickable_maps_url
+    = link_to 'Abbruch', admin_districts_url
   %p
-    = link_to "Löschen", admin_clickable_map_path(@district), :method => 'delete', :confirm => 'Sind Sie sicher?'
+    = link_to "Löschen", admin_district_path(@district), :method => 'delete', :confirm => 'Sind Sie sicher?'
 
