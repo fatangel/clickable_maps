@@ -16,10 +16,14 @@ class ClickableMapsExtension < Radiant::Extension
   end
 
   def activate
+    Admin::DistrictsController.send :include, Vhost::ControllerAccessExtensions 
+    Admin::AddressesController.send :include, Vhost::ControllerAccessExtensions
+
     tab 'Content' do
        add_item "Bezirke", "/admin/districts", :after => "Pages", :visibility => [:admin]
        add_item "Adressen", "/admin/addresses", :after => "Bezirke", :visibility => [:admin]    
     end
     Page.send :include, PdfTags
+
   end
 end

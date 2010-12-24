@@ -10,7 +10,9 @@
     %th 
       = link_to('Bundesland', '?order=state_id')
     %th
-      = link_to("Alle Vorlagen erzeugen", admin_generate_page_address_path(0))  
+      - if current_site.id==4
+        = link_to("Alle Vorlagen erzeugen", admin_generate_page_address_path(0))  
+      
   - unless @districts.blank?
     - @districts.each do |district|
       %tr
@@ -24,8 +26,9 @@
           = link_to(district.short_name, edit_admin_district_path(district))
         %td #{district.state.name}
         %td 
-          - unless district.address.nil?
-            = link_to("Vorlage erzeugen", admin_generate_page_address_path(district))     
+          - if current_site.id==4
+            - unless district.address.nil?
+              = link_to("Vorlage erzeugen", admin_generate_page_address_path(district))  
 = will_paginate @districts, :param_name => :page
 %p
 = link_to("Neuen Bezirk anlegen", new_admin_district_path)

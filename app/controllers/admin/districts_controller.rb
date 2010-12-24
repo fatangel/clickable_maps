@@ -1,8 +1,8 @@
 class Admin::DistrictsController < ApplicationController
   
   def index
-    @districts = District.paginate :per_page => 25, :page => params[:page], :order => 'name' unless params[:order]
-    @districts = District.paginate :per_page => 25, :page => params[:page], :order => params[:order] if params[:order]
+    order=params[:order]||'name'
+    @districts = District.paginate :per_page => 25, :page => params[:page], :order => order
   end
 
   def new
