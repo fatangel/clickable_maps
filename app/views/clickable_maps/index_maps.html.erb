@@ -9,7 +9,9 @@ function GoTo (select) {
 //  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
 //})
 
-$.fn.submitWithAjax = function() {
+var j = jQuery.noConflict();
+
+j.fn.submitWithAjax = function() {
   this.submit(function() {
     if (document.state_selector.state_id.selectedIndex>0) {
       $.post(this.action, $(this).serialize(), null, "script");
@@ -20,13 +22,12 @@ $.fn.submitWithAjax = function() {
   return this;
 };
 
-var j = jQuery.noConflict();
 
 j(document).ready(function(){
 
-$('#state_selector').submitWithAjax();
+j('#state_selector').submitWithAjax();
 
-$('#state_id').change(function() {
+j('#state_id').change(function() {
   if (document.state_selector.state_id.selectedIndex>0) {
     $.post(document.state_selector.action, $(document.state_selector).serialize(), null, "script");
     return false;
@@ -34,7 +35,7 @@ $('#state_id').change(function() {
   else return false;
 });
 
-$('#map').zoommap({
+j('#map').zoommap({
 		// Width and Height of the Map
 		width: '642',
 		height: '600',
@@ -87,7 +88,13 @@ $('#map').zoommap({
 <% end %>
 
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida erat vitae odio tempus egestas. Nullam massa justo, cursus eu commodo vitae, pellentesque sit amet nisl. Phasellus diam magna, pharetra ut aliquam quis, vehicula laoreet lectus. In mattis justo ac dui semper rhoncus. Suspendisse porta quam vitae diam varius tincidunt. Integer aliquet dui in urna ornare consectetur eget nec elit. Vestibulum tempor tristique congue. 
+Durch einen Klick auf ein Bundesland, erscheint eine Detailkarte mit allen Bezirken.
+Hier können Sie Ihre Suche durch Klick auf ein Lupensymbol beenden. 
+Er wird Ihnen eine Informationsseite des gewählten Bezirks mit Kontaktinformationen etc. angezeigt.
+</p>
+  
+<p>
+Alternativ können Sie auch die Auswahlliste der Bundesländer unterhalb verwenden:
 </p>
 
 <div>
