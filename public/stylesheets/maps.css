@@ -1,8 +1,20 @@
-#map { position: relative; width: 700px; height: 470px; overflow: hidden; background-repeat:no-repeat }
-#returnlink { display: block; position: absolute; top: 0; left: 0; padding: 3px; font-weight:bold; text-decoration:underline;}
+#map { position: relative; width: 1000px; height: 470px; overflow: hidden; background-repeat:no-repeat;z-index: 1; }
+#returnlink { display: block; position: absolute; top: 0; left: 0; padding: 3px; font-weight:bold; text-decoration:underline; }
 
 #map a.bullet { display: block; position: absolute; width: 23px; height: 23px; background-image:url(/images/maps/zoom.png); text-decoration: none; border: 0px solid red; opacity: .7; z-index: 2; }
 #map img.zoomable { }
 
-#map div.popup{ display: none; position: absolute; width: 200px; top: 100px; left: 150px; background: white; z-index: 3; padding: 10px; border: 2px solid black; }
-#map div.popup a.close{ display: block; position: absolute; bottom: 10px; right: 10px; }
+#map div.popup { display: none; position: absolute; width: 200px; top: 100px; left: 150px; background: white; z-index: 3; padding: 10px; border: 2px solid black; }
+#map div.popup a.close { display: block; position: absolute; bottom: 10px; right: 10px; }
+#map div.popupcontent p { padding-bottom:0px; margin-bottom:0px }
+
+#ajax-link a {
+	border-bottom: 1px dotted #444;
+}
+#ajax-link a:hover {
+	border-bottom: 1px solid #111;
+}
+#ajax-link {
+        margin-top:-45px;
+        margin-left: 220px;
+}
