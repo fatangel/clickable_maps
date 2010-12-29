@@ -9,12 +9,10 @@ function GoTo (select) {
 //  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
 //})
 
-var i = jQuery.noConflict();
-
-i.fn.submitWithAjax = function() {
+$.fn.submitWithAjax = function() {
   this.submit(function() {
     if (document.state_selector.state_id.selectedIndex>0) {
-      i.post(this.action, i(this).serialize(), null, "script");
+      $.post(this.action, $(this).serialize(), null, "script");
       return false;
     }
     else return false;
@@ -22,6 +20,7 @@ i.fn.submitWithAjax = function() {
   return this;
 };
 
+var i = jQuery.noConflict();
 
 i(document).ready(function(){
 
