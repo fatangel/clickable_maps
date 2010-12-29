@@ -9,12 +9,12 @@ function GoTo (select) {
 //  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
 //})
 
-var j = jQuery.noConflict();
+var i = jQuery.noConflict();
 
-j.fn.submitWithAjax = function() {
+i.fn.submitWithAjax = function() {
   this.submit(function() {
     if (document.state_selector.state_id.selectedIndex>0) {
-      $.post(this.action, $(this).serialize(), null, "script");
+      i.post(this.action, i(this).serialize(), null, "script");
       return false;
     }
     else return false;
@@ -23,19 +23,19 @@ j.fn.submitWithAjax = function() {
 };
 
 
-j(document).ready(function(){
+i(document).ready(function(){
 
-j('#state_selector').submitWithAjax();
+i('#state_selector').submitWithAjax();
 
-j('#state_id').change(function() {
+i('#state_id').change(function() {
   if (document.state_selector.state_id.selectedIndex>0) {
-    $.post(document.state_selector.action, $(document.state_selector).serialize(), null, "script");
+    i.post(document.state_selector.action, i(document.state_selector).serialize(), null, "script");
     return false;
   }
   else return false;
 });
 
-j('#map').zoommap({
+i('#map').zoommap({
 		// Width and Height of the Map
 		width: '642',
 		height: '600',
