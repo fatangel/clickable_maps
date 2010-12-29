@@ -20,7 +20,9 @@ $.fn.submitWithAjax = function() {
   return this;
 };
 
-$(document).ready(function(){
+var j = jQuery.noConflict();
+
+j(document).ready(function(){
 
 $('#state_selector').submitWithAjax();
 
