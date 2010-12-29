@@ -91,7 +91,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida erat vitae
 <div>
 <% form_for @states, {:url => {:action => "districts_list"}, :html => {:id => "state_selector", :name => "state_selector"}} do %>
 <%= collection_select(:state, :id, @states, :id, :name, { :include_blank => "Bundesland auswählen", :selected => nil }) %>
-  <!-- input type="submit" value="Bezirke anzeigen"/ -->
+  
+<!-- input type="submit" value="Bezirke anzeigen"/ -->
 <%  end %>
 </div>
 
