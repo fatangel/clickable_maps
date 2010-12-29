@@ -65,8 +65,8 @@ class Admin::DistrictsController < ApplicationController
    
     page_content="h3. "+district.address.behoerde+"\r\n"
     page_content+="Abteilung: "+district.address.abteilung+"\r\n" if district.address.abteilung.length>1
-    page_content+=district.address.adresse+"\r\n"
-    page_content+="\r\np. &nbsp;\r\nBeamtIn: "+district.address.name if district.address.name.length>1
+    page_content+=district.address.adresse+"\r\n\r\np. &nbsp;"
+    page_content+="\r\nBeamtIn: "+district.address.name if district.address.name.length>1
     page_content+="\r\nTelefon: "+district.address.telefon+"\r\nE-Mail: "+district.address.email+"\r\nWebseite: "
     page_content+="\"hier klicken\":"+district.address.url+"\r\nSonstiges: "+district.address.sonstiges
     @page=Page.find_by_slug(district.short_name)
