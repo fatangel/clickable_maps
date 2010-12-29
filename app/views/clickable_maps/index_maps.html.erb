@@ -1,11 +1,38 @@
 <script type="text/javascript">
 
+function GoTo (select) {
+  var link = select.options[select.options.selectedIndex].value;
+  if (link != "") window.location.href = link;
+}
+
 //$.ajaxSetup({
 //  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
 //})
-  
-i(document).ready(function(){
-i('#map').zoommap({
+
+$.fn.submitWithAjax = function() {
+  this.submit(function() {
+    if (document.state_selector.state_id.selectedIndex>0) {
+      $.post(this.action, $(this).serialize(), null, "script");
+      return false;
+    }
+    else return false;
+  })
+  return this;
+};
+
+$(document).ready(function(){
+
+$('#state_selector').submitWithAjax();
+
+$('#state_id').change(function() {
+  if (document.state_selector.state_id.selectedIndex>0) {
+    $.post(document.state_selector.action, $(document.state_selector).serialize(), null, "script");
+    return false;
+  }
+  else return false;
+});
+
+$('#map').zoommap({
 		// Width and Height of the Map
 		width: '642',
 		height: '600',
