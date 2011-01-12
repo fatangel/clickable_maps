@@ -33,7 +33,9 @@ class ClickableMapsController < ApplicationController
   end
 
   def districts_list
-    @districts=District.find_all_by_state_id(params[:state][:id], :conditions => "position_x IS NOT NULL") if params[:state][:id]
+    @districts=District.find_all_by_state_id(params[:state][:id], :conditions => "position_x IS NOT NULL") unless params[:state][:id]==9
+    @districts=District.find_all_by_short_name("326") if params[:state][:id]==9
+    
     respond_to do |format|
       format.html { redirect_to all_maps_path }
       format.js
