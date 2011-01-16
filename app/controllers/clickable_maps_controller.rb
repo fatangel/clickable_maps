@@ -6,6 +6,7 @@ class ClickableMapsController < ApplicationController
   
   def create
     @page = Page.find(params[:page_id])
+    @page.layout_id = Layout.find_by_name('standard-PDF').id
     make_and_send_pdf(CGI::escape(@page.title), :html_string => @page.render, :stylesheets => params[:cssfile], :baseurl => request.host)
   end
                
